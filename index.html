@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BioLens Pro - Identificación Botánica Precisa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo">🌿 BioLens Pro</div>
+            <button id="btn-settings" class="btn-icon-only" title="Configurar API">⚙️</button>
+        </div>
+        <p>Motor de Identificación Botánica Avanzada</p>
+    </header>
+
+    <main class="app-container">
+        <!-- Área de visualización de imagen -->
+        <section class="image-section">
+            <div id="image-preview-container" class="preview-container">
+                <div class="placeholder-content" id="placeholder-text">
+                    <span class="icon">📸</span>
+                    <p>Captura la hoja, flor o fruto de la planta</p>
+                </div>
+                <img id="image-preview" src="" alt="Vista previa" style="display: none;">
+            </div>
+        </section>
+
+        <!-- Controles de cámara y archivo -->
+        <section class="controls-section">
+            <input type="file" id="camera-input" accept="image/*" capture="environment" style="display: none;">
+            <input type="file" id="gallery-input" accept="image/*" style="display: none;">
+
+            <div class="button-group">
+                <button id="btn-camera" class="btn btn-primary">
+                    <span class="btn-icon">📷</span> Cámara
+                </button>
+                <button id="btn-gallery" class="btn btn-secondary">
+                    <span class="btn-icon">📁</span> Galería
+                </button>
+            </div>
+            
+            <button id="btn-identify" class="btn btn-action" disabled>
+                🔍 Identificar Especie
+            </button>
+        </section>
+
+        <!-- Estado de carga -->
+        <div id="loading-spinner" class="loading-container" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loading-text">Conectando con la base de datos botánica global...</p>
+        </div>
+
+        <!-- Resultados -->
+        <section id="results-section" class="results-section" style="display: none;">
+            <h3>Resultados de la Identificación</h3>
+            <div id="results-content">
+                <!-- Resultados dinámicos -->
+            </div>
+            <button id="btn-reset" class="btn btn-outline">Escanear otra planta</button>
+        </section>
+    </main>
+
+    <!-- Modal de Configuración de API -->
+    <div id="api-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Configuración del Motor Botánico</h2>
+            <p class="modal-text">Para lograr una precisión científica real, esta aplicación se conecta a <strong>Pl@ntNet API</strong>. Necesitas ingresar tu clave de acceso (API Key) gratuita.</p>
+            
+            <div class="api-steps">
+                <ol>
+                    <li>Crea una cuenta gratis en <a href="https://my.plantnet.org/" target="_blank">my.plantnet.org</a></li>
+                    <li>Genera una nueva aplicación para obtener tu <strong>API Key</strong>.</li>
+                    <li>Copia y pega la clave aquí abajo:</li>
+                </ol>
+            </div>
+
+            <input type="text" id="api-key-input" placeholder="Ej: 2b10xxxxxxxxxxxxxxxxx..." class="api-input">
+            <p id="api-error" class="error-msg"></p>
+            
+            <div class="modal-buttons">
+                <button id="btn-save-api" class="btn btn-action">Guardar y Continuar</button>
+                <button id="btn-close-modal" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Laboratorio Virtual de Ciencias Naturales</p>
+        <p><strong>Prof. Cristian David Ayazo | The Lighthouse School</strong></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
